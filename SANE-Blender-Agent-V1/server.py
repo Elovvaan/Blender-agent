@@ -132,7 +132,18 @@ def tools() -> dict[str, Any]:
         "tools": [
             "run_blender_python", "create_cube", "create_building", "create_platform", "create_tree",
             "create_terrain_tile", "export_fbx", "export_glb", "agent_chat"
-        ]
+        ],
+        "tool_endpoints": {
+            "run_blender_python": "/tool/run_blender_python",
+            "create_cube": "/tool/create_cube",
+            "create_building": "/tool/create_building",
+            "create_platform": "/tool/create_platform",
+            "create_tree": "/tool/create_tree",
+            "create_terrain_tile": "/tool/create_terrain_tile",
+            "export_fbx": "/tool/export_fbx",
+            "export_glb": "/tool/export_glb",
+            "agent_chat": "/agent/chat",
+        },
     }
 
 
