@@ -21,7 +21,7 @@ result = {{
 """.strip()
     return {
         "success": True,
-        "objects_created": [],
+        "objects_created": [material_name],
         "file_path": "",
         "errors": [],
         "script": code,
