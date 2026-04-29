@@ -54,9 +54,14 @@ class BlenderTCPHandler(socketserver.StreamRequestHandler):
         self.wfile.write((json.dumps(obj) + "\n").encode("utf-8"))
 
 
+class BlenderTCPServer(socketserver.ThreadingTCPServer):
+    allow_reuse_address = True
+    daemon_threads = True
+
+
 def main() -> None:
     LOGGER.info("Starting Blender bridge on 127.0.0.1:6789")
-    with socketserver.ThreadingTCPServer(("127.0.0.1", 6789), BlenderTCPHandler) as server:
+    with BlenderTCPServer(("127.0.0.1", 6789), BlenderTCPHandler) as server:
         server.serve_forever()
 
 
