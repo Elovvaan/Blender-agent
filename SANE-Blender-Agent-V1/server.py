@@ -105,9 +105,12 @@ def ollama_route(message: str) -> str | None:
             timeout=3,
         )
         if resp.status_code == 200:
-            out = resp.json().get("response", "").strip().split()[0]
-            if out in {"create_cube", "create_building", "create_platform", "create_tree", "create_terrain_tile", "export_fbx", "export_glb"}:
-                return out
+            response_text = resp.json().get("response", "").strip()
+            parts = response_text.split()
+            if parts:
+                out = parts[0]
+                if out in {"create_cube", "create_building", "create_platform", "create_tree", "create_terrain_tile", "export_fbx", "export_glb"}:
+                    return out
     except Exception:
         return None
     return None
